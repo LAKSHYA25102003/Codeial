@@ -3,6 +3,10 @@ const app=express();
 const port=8000;
 
 
+// setting view engine and path for view engine
+app.set("view engine","ejs");
+app.set("views","./views");
+
 // middle ware
 app.use('/', require('./routes/index.js'));
 
