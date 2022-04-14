@@ -14,6 +14,10 @@ module.exports={
 
     //renderin a page to sign up 
     SignUp:function(req,res){
+        if(req.isAuthenticated())
+        {
+            return res.redirect("/users/profile");
+        }
         return res.render("signup",{
             title:"SignUp"
         })
@@ -62,6 +66,10 @@ module.exports={
 
     // rendering the sign in page 
     SignIn:function(req,res){
+        if(req.isAuthenticated())
+        {
+            return res.redirect("/users/profile");
+        }
         return res.render("signin",{
             title:"SignIn"
         })
@@ -70,6 +78,12 @@ module.exports={
     // after checking the sign in details creating the session if sign credentials are correct
     createSession:function(req,res){
         // To do later
+        return res.redirect("/");
     },
+    destroySession:function(req,res)
+    {
+        req.logout();
+        res.redirect('/');
+    }
 
 }
